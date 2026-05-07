@@ -6,7 +6,6 @@
 <title>Denizli Sigorta | Berkcan Selçuk</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <!-- FACEBOOK PIXEL -->
 <script>
@@ -127,6 +126,7 @@ background:rgba(0,0,0,0.7);
 backdrop-filter:blur(8px);
 justify-content:center;
 align-items:center;
+z-index:999;
 }
 
 .modal-content{
@@ -191,7 +191,7 @@ cursor:pointer;
 
 <div class="container">
 <h1>Berkcan Selçuk</h1>
-<div class="subtitle">Sigorta Danışmanı | Magna Sigorta</div>
+<div class="subtitle">Sigorta & Risk Danışmanlığı</div>
 <div class="main-text">Denizli & Türkiye Geneli Sigorta Çözümleri</div>
 <div class="small-text">2 Dakikada Hızlı Teklif Al</div>
 
@@ -212,7 +212,7 @@ cursor:pointer;
 </a>
 </div>
 
-<footer>© Berkcan Selçuk – Türkiye Geneli Sigorta Acenteliği</footer>
+<footer>© Berkcan Selçuk – Sigorta & Risk Danışmanlığı</footer>
 </div>
 
 <div class="modal" id="modal">
@@ -240,8 +240,6 @@ cursor:pointer;
 </div>
 
 <script>
-emailjs.init("EMAILJS_PUBLIC_KEY_BURAYA");
-
 function openModal(){
 document.getElementById("modal").style.display="flex";
 }
@@ -261,20 +259,21 @@ name:document.getElementById("name").value,
 phone:document.getElementById("phone").value
 };
 
-// EMAILJS
-emailjs.send("SERVICE_ID","TEMPLATE_ID",data);
-
-// GOOGLE SHEETS WEBHOOK
-fetch(https://script.google.com/macros/s/AKfycbxEnm7UwTth16zy5wsBfhvTkRuZJsjI1nfrA83HjV_K-Wl0Uk2iXB3iM0anCs28FDVy/exec,{
+fetch("https://script.google.com/macros/s/AKfycbxEnm7UwTth16zy5wsBfhvTkRuZJsjI1nfrA83HjV_K-Wl0Uk2iXB3iM0anCs28FDVy/exec",{
 method:"POST",
+mode:"no-cors",
 body:JSON.stringify(data)
 });
 
-// FACEBOOK CONVERSION
+if(typeof fbq === "function"){
 fbq('track','Lead');
+}
 
 alert("Talebiniz alındı. En kısa sürede dönüş yapılacaktır.");
-location.reload();
+
+window.location.href =
+"https://wa.me/905459173353?text=" +
+encodeURIComponent(data.type + " teklifi almak istiyorum. Ad Soyad: " + data.name + " Telefon: " + data.phone);
 });
 </script>
 

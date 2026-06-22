@@ -196,6 +196,105 @@ justify-content:center;
 align-items:center;
 }
 
+.partners{
+margin:32px auto 0;
+width:min(560px,92vw);
+position:relative;
+display:grid;
+justify-items:center;
+gap:6px;
+}
+
+.partners::before{
+content:"";
+width:min(260px,70vw);
+height:1px;
+background:linear-gradient(90deg,rgba(0,245,255,0),rgba(0,245,255,0.38),rgba(0,245,255,0));
+}
+
+.partners strong{
+font-size:11px;
+font-weight:700;
+letter-spacing:0;
+text-transform:uppercase;
+color:rgba(255,255,255,0.48);
+}
+
+.partner-rotator{
+position:relative;
+width:min(390px,90vw);
+height:42px;
+overflow:hidden;
+}
+
+.partner-name{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:23px;
+font-weight:800;
+letter-spacing:0;
+color:rgba(255,255,255,0.88);
+opacity:0;
+transform:translateY(10px);
+animation:partnerFade 30s infinite;
+}
+
+.partner-name::after{
+content:"";
+position:absolute;
+left:50%;
+bottom:3px;
+width:76px;
+height:2px;
+border-radius:999px;
+background:currentColor;
+opacity:0.56;
+transform:translateX(-50%) scaleX(0.72);
+}
+
+.partner-allianz{color:#007ab3;text-shadow:0 0 14px rgba(0,122,179,0.28);}
+.partner-axa{color:#2f5bea;text-shadow:0 0 14px rgba(47,91,234,0.3);}
+.partner-corpus{color:#6676d8;text-shadow:0 0 14px rgba(102,118,216,0.24);}
+.partner-doga{color:#2fbd68;text-shadow:0 0 14px rgba(47,189,104,0.24);}
+.partner-emaa{color:#cfd8e3;text-shadow:0 0 14px rgba(207,216,227,0.16);}
+.partner-ethica{color:#e84558;text-shadow:0 0 14px rgba(232,69,88,0.24);}
+.partner-hdi{color:#20b36d;text-shadow:0 0 14px rgba(32,179,109,0.24);}
+.partner-hepiyi{color:#a973ff;text-shadow:0 0 14px rgba(169,115,255,0.24);}
+.partner-quick{color:#ef3456;text-shadow:0 0 14px rgba(239,52,86,0.24);}
+.partner-sompo{color:#f47c20;text-shadow:0 0 14px rgba(244,124,32,0.24);}
+.partner-ray{color:#3f8ee8;text-shadow:0 0 14px rgba(63,142,232,0.24);}
+.partner-turkiye{color:#18b6a3;text-shadow:0 0 14px rgba(24,182,163,0.24);}
+.partner-unico{color:#df4e95;text-shadow:0 0 14px rgba(223,78,149,0.22);}
+.partner-zurich{color:#4f9cf0;text-shadow:0 0 14px rgba(79,156,240,0.24);}
+.partner-anadolu{color:#00a7c8;text-shadow:0 0 14px rgba(0,167,200,0.24);}
+
+.partner-name:nth-child(1){animation-delay:0s;}
+.partner-name:nth-child(2){animation-delay:2s;}
+.partner-name:nth-child(3){animation-delay:4s;}
+.partner-name:nth-child(4){animation-delay:6s;}
+.partner-name:nth-child(5){animation-delay:8s;}
+.partner-name:nth-child(6){animation-delay:10s;}
+.partner-name:nth-child(7){animation-delay:12s;}
+.partner-name:nth-child(8){animation-delay:14s;}
+.partner-name:nth-child(9){animation-delay:16s;}
+.partner-name:nth-child(10){animation-delay:18s;}
+.partner-name:nth-child(11){animation-delay:20s;}
+.partner-name:nth-child(12){animation-delay:22s;}
+.partner-name:nth-child(13){animation-delay:24s;}
+.partner-name:nth-child(14){animation-delay:26s;}
+.partner-name:nth-child(15){animation-delay:28s;}
+
+@keyframes partnerFade{
+0%{opacity:0;filter:blur(3px);transform:translateY(10px);}
+3%{opacity:1;filter:blur(0);transform:translateY(0);}
+6%{opacity:1;filter:blur(0);transform:translateY(0);}
+9%{opacity:0;filter:blur(3px);transform:translateY(-10px);}
+100%{opacity:0;filter:blur(3px);transform:translateY(-10px);}
+}
+
 .save-contact{
 position:fixed;
 top:24px;
@@ -227,6 +326,11 @@ h1{font-size:32px;}
 .cta{width:100%;max-width:300px;padding:18px 22px;}
 .save-contact{top:14px;right:14px;padding:10px 14px;font-size:13px;}
 .features{margin-top:42px;gap:16px;}
+.partners{margin-top:26px;gap:5px;}
+.partners strong{font-size:10px;}
+.partner-rotator{height:38px;}
+.partner-name{font-size:19px;}
+.partner-name::after{bottom:2px;width:64px;}
 }
 </style>
 </head>
@@ -252,6 +356,27 @@ h1{font-size:32px;}
 <div class="feature"><i class="fa-solid fa-user-tie"></i>Uzman Kadro</div>
 <div class="feature"><i class="fa-solid fa-building"></i>10+ Sigorta Şirketi</div>
 <div class="feature"><i class="fa-solid fa-tags"></i>En Uygun Fiyat Garantisi</div>
+</div>
+
+<div class="partners" aria-label="Anlaşmalı sigorta şirketleri">
+<strong>Anlaşmalı Sigorta Şirketleri</strong>
+<div class="partner-rotator">
+<span class="partner-name partner-allianz">Allianz Sigorta</span>
+<span class="partner-name partner-axa">AXA Sigorta</span>
+<span class="partner-name partner-corpus">Corpus Sigorta</span>
+<span class="partner-name partner-doga">Doğa Sigorta</span>
+<span class="partner-name partner-emaa">Emaa Sigorta</span>
+<span class="partner-name partner-ethica">Ethica Sigorta</span>
+<span class="partner-name partner-hdi">HDI Sigorta</span>
+<span class="partner-name partner-hepiyi">Hepiyi Sigorta</span>
+<span class="partner-name partner-quick">Quick Sigorta</span>
+<span class="partner-name partner-sompo">Sompo Sigorta</span>
+<span class="partner-name partner-ray">Ray Sigorta</span>
+<span class="partner-name partner-turkiye">Türkiye Katılım</span>
+<span class="partner-name partner-unico">Unico Sigorta</span>
+<span class="partner-name partner-zurich">Zurich Sigorta</span>
+<span class="partner-name partner-anadolu">Anadolu Sigorta</span>
+</div>
 </div>
 
 <footer>© Berkcan Selçuk – Sigorta & Risk Danışmanlığı</footer>

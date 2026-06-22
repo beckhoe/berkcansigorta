@@ -190,27 +190,6 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.logo-wrap{
-margin:0 auto 18px;
-display:flex;
-justify-content:center;
-}
-
-.logo-badge{
-width:86px;
-height:86px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(45deg,#00f5ff,#0061ff);
-box-shadow:0 0 28px rgba(0,150,255,0.45);
-font-size:34px;
-font-weight:800;
-letter-spacing:0;
-color:#fff;
-}
-
 .action-buttons{
 display:flex;
 justify-content:center;
@@ -245,7 +224,6 @@ box-shadow:0 0 26px rgba(0,245,255,0.3);
 @media(max-width:600px){
 h1{font-size:32px;}
 .main-text{font-size:22px;}
-.logo-badge{width:74px;height:74px;font-size:30px;}
 .cta{width:100%;max-width:300px;padding:18px 22px;}
 .save-contact{top:14px;right:14px;padding:10px 14px;font-size:13px;}
 .features{margin-top:42px;gap:16px;}
@@ -255,10 +233,9 @@ h1{font-size:32px;}
 
 <body>
 
-<a class="save-contact" href="berkcan-selcuk.vcf" download="Berkcan-Selcuk.vcf"><i class="fa-solid fa-address-card"></i>Rehbere Kaydet</a>
+<a class="save-contact" href="berkcan-selcuk.vcf" type="text/vcard"><i class="fa-solid fa-address-card"></i>Rehbere Kaydet</a>
 
 <div class="container">
-<div class="logo-wrap"><div class="logo-badge">BS</div></div>
 <h1>Berkcan Selçuk</h1>
 <div class="subtitle">Sigorta & Risk Danışmanlığı</div>
 <div class="main-text">Denizli & Türkiye Geneli Sigorta Çözümleri</div>

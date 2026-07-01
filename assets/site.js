@@ -141,7 +141,7 @@
     }
   }
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(form);
@@ -150,20 +150,53 @@
     const type = String(formData.get("type") || "").trim();
     const message = String(formData.get("message") || "").trim();
 
-    const whatsappText = [
-      "Merhaba Berkcan Bey, teklif almak istiyorum.",
-      name ? "Ad Soyad: " + name : "",
-      phone ? "Telefon: " + phone : "",
-      type ? "Sigorta Türü: " + type : "",
-      message ? "Not: " + message : ""
-    ].filter(Boolean).join("\n");
-
-    const whatsappUrl = "https://wa.me/905459173353?text=" + encodeURIComponent(whatsappText);
+    const submitButton = form.querySelector("button[type='submit']");
+    const submitLabel = submitButton ? submitButton.innerHTML : "";
+    const leadData = {
+      type,
+      name,
+      phone,
+      message,
+      note: message,
+      source: "berkcansigorta.com",
+      createdAt: new Date().toISOString()
+    };
 
     if (status) {
-      status.textContent = "WhatsApp açılıyor...";
+      status.className = "form-status";
+      status.textContent = "Talebiniz kaydediliyor...";
     }
 
-    window.location.assign(whatsappUrl);
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.setAttribute("aria-busy", "true");
+      submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gönderiliyor';
+    }
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbxEnm7UwTth16zy5wsBfhvTkRuZJsjI1nfrA83HjV_K-Wl0Uk2iXB3iM0anCs28FDVy/exec", {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(leadData)
+      });
+
+      form.reset();
+
+      if (status) {
+        status.className = "form-status is-success";
+        status.textContent = "Talebiniz alındı. En kısa sürede sizinle iletişime geçeceğiz.";
+      }
+    } catch (error) {
+      if (status) {
+        status.className = "form-status is-error";
+        status.textContent = "Talep gönderilemedi. Lütfen tekrar deneyin veya telefonla ulaşın.";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+        submitButton.innerHTML = submitLabel;
+      }
+    }
   });
 })();

@@ -2678,6 +2678,15 @@ h3 {
   border: 0;
 }
 
+.btn.whatsapp-submit {
+  background: linear-gradient(135deg, #25d366, #18b85a 56%, #0d8f49);
+  box-shadow: 0 18px 44px rgba(18, 184, 90, 0.28);
+}
+
+.btn.whatsapp-submit:hover {
+  box-shadow: 0 20px 50px rgba(18, 184, 90, 0.36);
+}
+
 .prepared-link {
   margin-top: 12px;
 }
@@ -2691,6 +2700,10 @@ h3 {
   margin: 14px 0 0;
   color: var(--secondary);
   font-weight: 800;
+}
+
+.form-status:empty {
+  display: none;
 }
 
 .reveal {
@@ -3140,9 +3153,32 @@ h3 {
     font-size: 34px;
   }
 
-  .hero-actions,
-  .btn {
+  .hero {
+    min-height: auto;
+    display: block;
+    padding-top: 112px;
+    padding-bottom: 42px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
     width: 100%;
+    margin-top: 28px;
+  }
+
+  .hero-actions .btn,
+  .quote-form .btn {
+    width: 100%;
+  }
+
+  .hero-proof {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 18px;
   }
 
   .hero-proof span {
@@ -3171,6 +3207,30 @@ h3 {
 
   .scene-visual {
     min-height: 320px;
+  }
+
+  .health-scene .scene-visual {
+    min-height: 390px;
+  }
+
+  .health-monitor {
+    gap: 14px;
+  }
+
+  .hospital-sign {
+    min-height: 70px;
+    padding: 12px;
+  }
+
+  .health-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .health-metrics b {
+    min-height: 58px;
+    padding: 8px 5px;
+    font-size: 11px;
   }
 
   .risk-dashboard,
@@ -3362,7 +3422,6 @@ h3 {
     left: 72%;
   }
 
-  .metric-grid,
   .service-grid {
     grid-template-columns: 1fr;
   }
@@ -3400,6 +3459,12 @@ h3 {
 
   .quote-form {
     padding: 22px;
+  }
+
+  .whatsapp-submit {
+    min-height: 58px;
+    padding: 0 16px;
+    font-size: 15px;
   }
 }
 

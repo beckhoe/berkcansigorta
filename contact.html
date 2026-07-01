@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim ve Teklif Al | Berkcan Sigorta</title>
+  <meta name="description" content="Berkcan Sigorta teklif formu. Trafik, kasko, DASK, konut, sağlık, iş yeri, seyahat ve TARSİM için hızlı teklif alın.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Berkcan Sigorta ana sayfa">
+      <span class="brand-word">Berkcan Sigorta</span>
+      <span class="brand-line">Sigorta ve Risk Danışmanlığı</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menüyü aç" data-nav-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="main-nav" data-nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="index.html#hizmetler">Hizmetler</a>
+      <a href="about.html">Hakkımızda</a>
+      <a href="contact.html">İletişim</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero contact-hero">
+      <div class="page-hero-content reveal">
+        <span class="eyebrow">Teklif merkezi</span>
+        <h1>Sigorta teklifinizi profesyonel bir görüşmeyle netleştirelim.</h1>
+        <p>İhtiyacınızı, önceliklerinizi ve beklediğiniz güvenceyi kısa bir form üzerinden alalım; size daha bilinçli ve hızlı dönüş hazırlayalım.</p>
+        <div class="contact-proof">
+          <span><i class="fa-solid fa-clock"></i> 2 dakikalık form</span>
+          <span><i class="fa-solid fa-lock"></i> Bilgiler siz onaylamadan gönderilmez</span>
+          <span><i class="fa-brands fa-whatsapp"></i> WhatsApp üzerinden dönüş</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="teklif">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Danışmanlık yaklaşımı</span>
+        <h2>Teklif değil, doğru güvence kararını birlikte netleştirelim.</h2>
+        <p>Farklı şirketlerden gelen poliçe seçeneklerini yalnızca fiyata göre değil; kapsam, hasar desteği ve ihtiyaç uyumuna göre değerlendiririz.</p>
+
+        <div class="contact-actions">
+          <a href="tel:+905459173353"><i class="fa-solid fa-phone"></i><span>Telefon</span><b>0545 917 33 53</b></a>
+          <a href="https://wa.me/905459173353"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span><b>Hızlı görüşme</b></a>
+          <a href="mailto:info@berkcansigorta.com"><i class="fa-regular fa-envelope"></i><span>E-posta</span><b>info@berkcansigorta.com</b></a>
+        </div>
+
+      </div>
+
+      <form class="quote-form reveal" data-contact-form>
+        <div class="form-heading">
+          <div>
+            <span>Ön değerlendirme formu</span>
+            <strong>Size özel teklif görüşmesini hazırlayalım</strong>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Ad Soyad</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Adınız ve soyadınız" required>
+          </label>
+          <label class="form-field">
+            <span>Telefon</span>
+            <input type="tel" name="phone" inputmode="tel" autocomplete="tel" placeholder="05xx xxx xx xx" required>
+          </label>
+          <label class="form-field form-field-wide">
+            <span>Sigorta türü</span>
+            <select name="type" data-type-select required>
+              <option value="">Seçiniz</option>
+              <option>Trafik Sigortası</option>
+              <option>Kasko</option>
+              <option>DASK</option>
+              <option>Konut Sigortası</option>
+              <option>Sağlık Sigortası</option>
+              <option>İş Yeri Sigortası</option>
+              <option>Seyahat Sigortası</option>
+              <option>TARSİM</option>
+              <option>Risk Analizi</option>
+            </select>
+          </label>
+          <label class="form-field form-field-wide">
+            <span>Notunuz</span>
+            <textarea name="message" rows="4" placeholder="Kısaca ihtiyacınızı yazabilirsiniz."></textarea>
+          </label>
+        </div>
+
+        <button class="btn primary form-submit" type="submit">
+          <i class="fa-solid fa-paper-plane"></i>
+          Teklif Görüşmesini Hazırla
+        </button>
+        <p class="form-status" data-form-status aria-live="polite"></p>
+        <a class="btn secondary prepared-link" data-whatsapp-result href="#" hidden>
+          <i class="fa-brands fa-whatsapp"></i>
+          WhatsApp'ta Gönder
+        </a>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© Berkcan Sigorta - Sigorta ve Risk Danışmanlığı</span>
+    <span>Denizli ve Türkiye geneli danışmanlık desteği</span>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
+

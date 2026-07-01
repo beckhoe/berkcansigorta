@@ -1,448 +1,364 @@
-﻿<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html>
+<html lang="tr" class="no-js">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Denizli Sigorta | Berkcan Selçuk</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- FACEBOOK PIXEL -->
-<script>
-!function(f,b,e,v,n,t,s){
-if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)
-}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-fbq('init', '1232363979021856');
-fbq('track', 'PageView');
-</script>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{
-background:#0f2027;
-color:#fff;
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-overflow:hidden;
-}
-
-body::before{
-content:"";
-position:fixed;
-width:200%;
-height:200%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:moveStars 60s linear infinite;
-opacity:0.15;
-z-index:-1;
-}
-
-@keyframes moveStars{
-from{transform:translate(0,0);}
-to{transform:translate(-500px,-500px);}
-}
-
-.container{max-width:850px;padding:20px;}
-h1{font-size:38px;margin-bottom:8px;}
-.subtitle{opacity:0.7;margin-bottom:25px;}
-.main-text{font-size:26px;font-weight:600;}
-.small-text{opacity:0.8;margin-bottom:40px;}
-
-.cta{
-background:linear-gradient(45deg,#00f5ff,#0061ff);
-padding:22px 78px;
-border-radius:50px;
-font-size:22px;
-font-weight:bold;
-border:none;
-cursor:pointer;
-color:white;
-box-shadow:0 0 26px rgba(0,150,255,0.75);
-animation:pulse 2s infinite;
-transition:0.3s;
-}
-
-.cta:hover{
-transform:translateY(-2px);
-box-shadow:0 0 44px rgba(0,150,255,1);
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 20px rgba(0,150,255,0.6);}
-50%{box-shadow:0 0 40px rgba(0,150,255,1);}
-100%{box-shadow:0 0 20px rgba(0,150,255,0.6);}
-}
-
-.features{
-margin-top:60px;
-display:flex;
-flex-wrap:wrap;
-gap:25px;
-justify-content:center;
-font-size:14px;
-opacity:0.9;
-}
-
-.feature i{color:#00f5ff;margin-right:8px;}
-
-.contact{
-margin-top:60px;
-display:flex;
-flex-direction:column;
-gap:12px;
-font-size:14px;
-}
-
-.contact a{
-background:rgba(255,255,255,0.08);
-padding:10px;
-border-radius:12px;
-text-decoration:none;
-color:#fff;
-transition:0.3s;
-}
-
-.contact a:hover{
-background:rgba(255,255,255,0.2);
-}
-
-footer{
-margin-top:20px;
-opacity:0.5;
-font-size:12px;
-}
-
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(8px);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-.modal-content{
-background:rgba(255,255,255,0.08);
-padding:40px;
-border-radius:25px;
-width:90%;
-max-width:500px;
-animation:fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:scale(0.9);}
-to{opacity:1;transform:scale(1);}
-}
-
-.options{
-display:grid;
-gap:12px;
-margin-bottom:20px;
-}
-
-.option{
-background:rgba(255,255,255,0.1);
-padding:12px;
-border-radius:12px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.option:hover{
-background:rgba(255,255,255,0.25);
-}
-
-form{
-display:none;
-flex-direction:column;
-gap:12px;
-}
-
-input,button{
-padding:10px;
-border-radius:10px;
-border:none;
-}
-
-input{
-background:rgba(255,255,255,0.1);
-color:#fff;
-}
-
-form button{
-background:#00c6ff;
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-}
-
-.action-buttons{
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.partners{
-margin:32px auto 0;
-width:min(560px,92vw);
-position:relative;
-display:grid;
-justify-items:center;
-gap:6px;
-}
-
-.partners::before{
-content:"";
-width:min(260px,70vw);
-height:1px;
-background:linear-gradient(90deg,rgba(0,245,255,0),rgba(0,245,255,0.38),rgba(0,245,255,0));
-}
-
-.partners strong{
-font-size:11px;
-font-weight:700;
-letter-spacing:0;
-text-transform:uppercase;
-color:rgba(255,255,255,0.48);
-}
-
-.partner-rotator{
-position:relative;
-width:min(390px,90vw);
-height:42px;
-overflow:hidden;
-}
-
-.partner-name{
-position:absolute;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:23px;
-font-weight:800;
-letter-spacing:0;
-color:rgba(255,255,255,0.88);
-opacity:0;
-transform:translateY(10px);
-animation:partnerFade 30s infinite;
-}
-
-.partner-name::after{
-content:"";
-position:absolute;
-left:50%;
-bottom:3px;
-width:76px;
-height:2px;
-border-radius:999px;
-background:currentColor;
-opacity:0.56;
-transform:translateX(-50%) scaleX(0.72);
-}
-
-.partner-allianz{color:#007ab3;text-shadow:0 0 14px rgba(0,122,179,0.28);}
-.partner-axa{color:#2f5bea;text-shadow:0 0 14px rgba(47,91,234,0.3);}
-.partner-corpus{color:#6676d8;text-shadow:0 0 14px rgba(102,118,216,0.24);}
-.partner-doga{color:#2fbd68;text-shadow:0 0 14px rgba(47,189,104,0.24);}
-.partner-emaa{color:#cfd8e3;text-shadow:0 0 14px rgba(207,216,227,0.16);}
-.partner-ethica{color:#e84558;text-shadow:0 0 14px rgba(232,69,88,0.24);}
-.partner-hdi{color:#20b36d;text-shadow:0 0 14px rgba(32,179,109,0.24);}
-.partner-hepiyi{color:#a973ff;text-shadow:0 0 14px rgba(169,115,255,0.24);}
-.partner-quick{color:#ef3456;text-shadow:0 0 14px rgba(239,52,86,0.24);}
-.partner-sompo{color:#f47c20;text-shadow:0 0 14px rgba(244,124,32,0.24);}
-.partner-ray{color:#3f8ee8;text-shadow:0 0 14px rgba(63,142,232,0.24);}
-.partner-turkiye{color:#18b6a3;text-shadow:0 0 14px rgba(24,182,163,0.24);}
-.partner-unico{color:#df4e95;text-shadow:0 0 14px rgba(223,78,149,0.22);}
-.partner-zurich{color:#4f9cf0;text-shadow:0 0 14px rgba(79,156,240,0.24);}
-.partner-anadolu{color:#00a7c8;text-shadow:0 0 14px rgba(0,167,200,0.24);}
-
-.partner-name:nth-child(1){animation-delay:0s;}
-.partner-name:nth-child(2){animation-delay:2s;}
-.partner-name:nth-child(3){animation-delay:4s;}
-.partner-name:nth-child(4){animation-delay:6s;}
-.partner-name:nth-child(5){animation-delay:8s;}
-.partner-name:nth-child(6){animation-delay:10s;}
-.partner-name:nth-child(7){animation-delay:12s;}
-.partner-name:nth-child(8){animation-delay:14s;}
-.partner-name:nth-child(9){animation-delay:16s;}
-.partner-name:nth-child(10){animation-delay:18s;}
-.partner-name:nth-child(11){animation-delay:20s;}
-.partner-name:nth-child(12){animation-delay:22s;}
-.partner-name:nth-child(13){animation-delay:24s;}
-.partner-name:nth-child(14){animation-delay:26s;}
-.partner-name:nth-child(15){animation-delay:28s;}
-
-@keyframes partnerFade{
-0%{opacity:0;filter:blur(3px);transform:translateY(10px);}
-3%{opacity:1;filter:blur(0);transform:translateY(0);}
-6%{opacity:1;filter:blur(0);transform:translateY(0);}
-9%{opacity:0;filter:blur(3px);transform:translateY(-10px);}
-100%{opacity:0;filter:blur(3px);transform:translateY(-10px);}
-}
-
-.save-contact{
-position:fixed;
-top:24px;
-right:24px;
-z-index:10;
-background:rgba(255,255,255,0.08);
-padding:12px 18px;
-border-radius:50px;
-font-size:14px;
-font-weight:bold;
-color:#fff;
-text-decoration:none;
-border:1px solid rgba(255,255,255,0.18);
-box-shadow:0 0 18px rgba(0,245,255,0.18);
-transition:0.3s;
-backdrop-filter:blur(8px);
-}
-
-.save-contact:hover{
-background:rgba(255,255,255,0.2);
-box-shadow:0 0 26px rgba(0,245,255,0.3);
-}
-
-.save-contact i{margin-right:8px;color:#00f5ff;}
-
-@media(max-width:600px){
-h1{font-size:32px;}
-.main-text{font-size:22px;}
-.cta{width:100%;max-width:300px;padding:18px 22px;}
-.save-contact{top:14px;right:14px;padding:10px 14px;font-size:13px;}
-.features{margin-top:42px;gap:16px;}
-.partners{margin-top:26px;gap:5px;}
-.partners strong{font-size:10px;}
-.partner-rotator{height:38px;}
-.partner-name{font-size:19px;}
-.partner-name::after{bottom:2px;width:64px;}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Berkcan Sigorta | Premium Sigorta Çözümleri</title>
+  <meta name="description" content="Berkcan Sigorta ile trafik, kasko, DASK, konut, sağlık, iş yeri, seyahat ve tarım sigortalarında hızlı teklif desteği.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/site.css">
 </head>
+<body data-page="home">
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Berkcan Sigorta ana sayfa">
+      <span class="brand-word">Berkcan Sigorta</span>
+      <span class="brand-line">Sigorta ve Risk Danışmanlığı</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menüyü aç" data-nav-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="main-nav" data-nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="about.html">Hakkımızda</a>
+      <a href="contact.html">İletişim</a>
+      <a class="nav-contact" href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AN:Sel%C3%A7uk;Berkcan;;;%0AFN:Berkcan%20Sel%C3%A7uk%0AORG:Berkcan%20Sigorta%0ATITLE:Sigorta%20Dan%C4%B1%C5%9Fman%C4%B1%0ATEL;TYPE=CELL:%2B905459173353%0AEMAIL:info@berkcansigorta.com%0AURL:https://berkcansigorta.com%0ANOTE:Sigortac%C4%B1%20-%20trafik%2C%20kasko%2C%20DASK%2C%20konut%2C%20sa%C4%9Fl%C4%B1k%20ve%20i%C5%9F%20yeri%20sigortas%C4%B1.%0AEND:VCARD">
+        <i class="fa-regular fa-address-card"></i>
+        Rehbere Kaydet
+      </a>
+    </nav>
+  </header>
 
-<body>
+  <main>
+    <section class="hero">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Berkcan Selçuk ile kişisel sigorta danışmanlığı</p>
+        <h1>Hayatın Her Alanında Güvenli Sigorta Çözümleri</h1>
+        <p class="hero-copy">Trafik, kasko, DASK, konut, sağlık, iş yeri, seyahat ve tarım sigortalarında ihtiyaçlarınıza uygun hızlı teklif desteği.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="contact.html#teklif">
+            <i class="fa-solid fa-paper-plane"></i>
+            Teklif Al
+          </a>
+          <a class="btn secondary" href="#hizmetler">
+            <i class="fa-solid fa-table-cells-large"></i>
+            Hizmetleri İncele
+          </a>
+        </div>
+      </div>
+      <div class="hero-proof reveal">
+        <span><strong>7/24</strong> destek</span>
+        <span><strong>20+</strong> sigorta şirketi</span>
+        <span><strong>2 dk</strong> hızlı başvuru</span>
+      </div>
+    </section>
 
-<a class="save-contact" href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AN:Sel%C3%A7uk;Berkcan;;;%0AFN:Berkcan%20Sel%C3%A7uk%0AORG:Berkcan%20Sigorta%0ATITLE:Sigortac%C4%B1%0ATEL;TYPE=CELL,VOICE:+905459173353%0AURL:https://berkcansigorta.com%0ANOTE:Sigortac%C4%B1%0AEND:VCARD" type="text/vcard"><i class="fa-solid fa-address-card"></i>Rehbere Kaydet</a>
+    <section class="intro-strip">
+      <div>
+        <span class="strip-kicker">Güvenli karar yolculuğu</span>
+        <h2>Her risk alanı için ayrı düşünülmüş, net ve hızlı teklif akışı.</h2>
+      </div>
+      <a class="text-link" href="contact.html#teklif">Hemen bilgi bırak <i class="fa-solid fa-arrow-right"></i></a>
+    </section>
 
-<div class="container">
-<h1>Berkcan Selçuk</h1>
-<div class="subtitle">Sigorta & Risk Danışmanlığı</div>
-<div class="main-text">Denizli & Türkiye Geneli Sigorta Çözümleri</div>
-<div class="small-text">2 Dakikada Hızlı Teklif Al</div>
+    <section class="company-network" aria-label="Anlaşmalı sigorta şirketleri">
+      <div class="company-copy reveal">
+        <span class="eyebrow">Geniş şirket ağı</span>
+        <h2>Anlaşmalı sigorta şirketleriyle ihtiyacına uygun teklif seçenekleri.</h2>
+      </div>
+      <div class="company-rotator" aria-hidden="true">
+        <div class="company-track">
+          <span class="brand-chip" style="--brand:#00008F;">Axa Sigorta</span>
+          <span class="brand-chip" style="--brand:#003781;">Allianz Sigorta</span>
+          <span class="brand-chip" style="--brand:#E31E24;">Sompo Sigorta</span>
+          <span class="brand-chip" style="--brand:#F58220;">Corpus Sigorta</span>
+          <span class="brand-chip" style="--brand:#22A447;">Doğa Sigorta</span>
+          <span class="brand-chip" style="--brand:#1C75BC;">Emaa Sigorta</span>
+          <span class="brand-chip" style="--brand:#7B2CBF;">Ethica Sigorta</span>
+          <span class="brand-chip" style="--brand:#E30613;">Hdi Sigorta</span>
+          <span class="brand-chip" style="--brand:#00A651;">Hepiyi Sigorta</span>
+          <span class="brand-chip" style="--brand:#F7941D;">Quick Sigorta</span>
+          <span class="brand-chip" style="--brand:#F58220;">Ray Sigorta</span>
+          <span class="brand-chip" style="--brand:#009879;">Türkiye Katılım</span>
+          <span class="brand-chip" style="--brand:#D71920;">Unico Sigorta</span>
+          <span class="brand-chip" style="--brand:#006AA6;">Zurich Sigorta</span>
+          <span class="brand-chip" style="--brand:#005BAA;">Anadolu Sigorta</span>
+        </div>
+      </div>
+      <div class="company-note reveal">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Tek bir teklif yerine; fiyat, kapsam ve hasar desteğini birlikte değerlendiririz.</span>
+      </div>
+    </section>
 
-<div class="action-buttons">
-<button class="cta" onclick="openModal()">Teklif Al</button>
-</div>
+    <section class="story-scene health-scene" style="--scene-image:url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=82'); --scene-accent:#2EA3F2;">
+      <div class="scene-inner">
+        <div class="scene-copy reveal">
+          <span class="scene-label">Sağlık Sigortası</span>
+          <h2>Temiz, hızlı ve güven veren sağlık desteği.</h2>
+          <p>Özel sağlık ve tamamlayıcı sağlık seçeneklerinde ihtiyacınıza uygun kapsamı birlikte karşılaştırırız. Amaç karmaşayı azaltmak, doğru poliçeye daha hızlı ulaşmak.</p>
+          <a class="scene-cta" href="contact.html?type=Sağlık%20Sigortası#teklif">Sağlık teklifi al <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="scene-visual reveal" aria-hidden="true">
+          <div class="monitor-panel health-monitor">
+            <div class="hospital-sign">
+              <i class="fa-solid fa-hospital"></i>
+              <div>
+                <strong>Hastane ve tedavi ağı</strong>
+                <span>Tamamlayıcı ve özel sağlık kapsamı</span>
+              </div>
+            </div>
+            <svg class="pulse-line" viewBox="0 0 520 130" role="img" aria-label="Hareketli kalp ritmi">
+              <polyline class="pulse-track" points="0,72 88,72 116,35 146,104 184,18 222,112 258,72 336,72 370,46 402,90 430,64 520,64"></polyline>
+              <polyline class="pulse-active" points="0,72 88,72 116,35 146,104 184,18 222,112 258,72 336,72 370,46 402,90 430,64 520,64"></polyline>
+            </svg>
+            <div class="metric-grid health-metrics">
+              <b>Yatarak Tedavi</b>
+              <b>Ayakta Tedavi</b>
+              <b>Doğum Teminatı</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="features">
-<div class="feature"><i class="fa-solid fa-clock"></i>7/24 Destek</div>
-<div class="feature"><i class="fa-solid fa-shield-halved"></i>Güvenilir</div>
-<div class="feature"><i class="fa-solid fa-bolt"></i>Hızlı İşlem</div>
-<div class="feature"><i class="fa-solid fa-user-tie"></i>Uzman Kadro</div>
-<div class="feature"><i class="fa-solid fa-building"></i>10+ Sigorta Şirketi</div>
-<div class="feature"><i class="fa-solid fa-tags"></i>En Uygun Fiyat Garantisi</div>
-</div>
+    <section class="story-scene car-scene" style="--scene-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1800&q=82'); --scene-accent:#4BB3FD;">
+      <div class="scene-inner">
+        <div class="scene-copy reveal">
+          <span class="scene-label">Trafik ve Kasko</span>
+          <h2>Yolda kontrol, hasarda hızlı yönlendirme.</h2>
+          <p>Trafik sigortası ve kasko tekliflerinde fiyat, teminat ve güvenilir şirket seçeneklerini birlikte değerlendiririz. Sadece fiyat değil, ihtiyaç anındaki destek de önemlidir.</p>
+          <a class="scene-cta" href="contact.html?type=Kasko#teklif">Araç teklifi al <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="scene-visual road-visual reveal" aria-hidden="true">
+          <div class="traffic-road">
+            <span class="road-line"></span>
+            <span class="traffic-car car-a"></span>
+            <span class="traffic-car car-b"></span>
+            <span class="traffic-car car-c"></span>
+            <span class="traffic-car car-d"></span>
+          </div>
+          <div class="traffic-status">
+            <strong>Kasko + Trafik</strong>
+            <span>Şirket, teminat ve asistans karşılaştırması</span>
+          </div>
+          <div class="traffic-tags">
+            <span>Mini onarım</span>
+            <span>Yol yardım</span>
+            <span>İkame araç</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="partners" aria-label="Anlaşmalı sigorta şirketleri">
-<strong>Anlaşmalı Sigorta Şirketleri</strong>
-<div class="partner-rotator">
-<span class="partner-name partner-allianz">Allianz Sigorta</span>
-<span class="partner-name partner-axa">AXA Sigorta</span>
-<span class="partner-name partner-corpus">Corpus Sigorta</span>
-<span class="partner-name partner-doga">Doğa Sigorta</span>
-<span class="partner-name partner-emaa">Emaa Sigorta</span>
-<span class="partner-name partner-ethica">Ethica Sigorta</span>
-<span class="partner-name partner-hdi">HDI Sigorta</span>
-<span class="partner-name partner-hepiyi">Hepiyi Sigorta</span>
-<span class="partner-name partner-quick">Quick Sigorta</span>
-<span class="partner-name partner-sompo">Sompo Sigorta</span>
-<span class="partner-name partner-ray">Ray Sigorta</span>
-<span class="partner-name partner-turkiye">Türkiye Katılım</span>
-<span class="partner-name partner-unico">Unico Sigorta</span>
-<span class="partner-name partner-zurich">Zurich Sigorta</span>
-<span class="partner-name partner-anadolu">Anadolu Sigorta</span>
-</div>
-</div>
+    <section class="story-scene home-scene" style="--scene-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=82'); --scene-accent:#68D391;">
+      <div class="scene-inner">
+        <div class="scene-copy reveal">
+          <span class="scene-label">Konut ve DASK</span>
+          <h2>Eviniz, iş yeriniz ve birikiminiz için sağlam koruma.</h2>
+          <p>Konut, DASK ve iş yeri sigortalarında binanın, eşyaların ve faaliyetin gerçek ihtiyacına göre kapsam oluştururuz. Gereksiz kalemleri azaltıp kritik riskleri görünür kılarız.</p>
+          <a class="scene-cta" href="contact.html?type=Konut%20Sigortası#teklif">Konut teklifi al <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="scene-visual property-visual reveal" aria-hidden="true">
+          <div class="property-dashboard">
+            <div class="construction-scene">
+              <svg class="construction-illustration" viewBox="0 0 620 330" aria-hidden="true">
+                <defs>
+                  <linearGradient id="steelGlow" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#DFFFE9" stop-opacity=".92"></stop>
+                    <stop offset=".52" stop-color="#7EF0A8" stop-opacity=".86"></stop>
+                    <stop offset="1" stop-color="#2EA3F2" stop-opacity=".66"></stop>
+                  </linearGradient>
+                  <radialGradient id="siteGlow" cx="50%" cy="45%" r="60%">
+                    <stop offset="0" stop-color="#7EF0A8" stop-opacity=".22"></stop>
+                    <stop offset="1" stop-color="#7EF0A8" stop-opacity="0"></stop>
+                  </radialGradient>
+                </defs>
+                <rect class="site-aura" x="18" y="16" width="584" height="296" rx="18"></rect>
+                <g class="stage-ground">
+                  <path class="site-ground" d="M72 274H548"></path>
+                  <path class="site-foundation" d="M128 246H492V274H128Z"></path>
+                  <path class="foundation-edge" d="M150 258H470"></path>
+                </g>
 
-<footer>© Berkcan Selçuk – Sigorta & Risk Danışmanlığı</footer>
-</div>
+                <g class="brick-wall">
+                  <path class="brick-panel" d="M164 162H456V246H164Z"></path>
+                  <path class="brick-lines" d="M164 180H456M164 198H456M164 216H456M164 234H456M188 162V180M248 162V180M308 162V180M368 162V180M428 162V180M218 180V198M278 180V198M338 180V198M398 180V198M188 198V216M248 198V216M308 198V216M368 198V216M428 198V216M218 216V234M278 216V234M338 216V234M398 216V234"></path>
+                  <path class="door-window" d="M214 246V206H266V246M354 184H410V222H354Z"></path>
+                </g>
 
-<div class="modal" id="modal">
-<div class="modal-content">
-<h2>Sigorta Türü Seçin</h2>
+                <g class="roof-set">
+                  <path class="roof-slab" d="M132 164L310 72L488 164"></path>
+                  <path class="roof-under" d="M154 164H466"></path>
+                  <path class="roof-tile" d="M188 148L310 88L432 148"></path>
+                </g>
+              </svg>
+            </div>
+            <div class="property-risks">
+              <span><i class="fa-solid fa-fire-flame-curved"></i> Yangın</span>
+              <span><i class="fa-solid fa-water"></i> Su basması</span>
+              <span><i class="fa-solid fa-mask-face"></i> Hırsızlık</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="options" id="options">
-<div class="option" onclick="selectType('Trafik Sigortası')">Trafik</div>
-<div class="option" onclick="selectType('Kasko Sigortası')">Kasko</div>
-<div class="option" onclick="selectType('Sağlık Sigortası')">Sağlık</div>
-<div class="option" onclick="selectType('DASK Sigortası')">DASK</div>
-<div class="option" onclick="selectType('Konut Sigortası')">Konut</div>
-<div class="option" onclick="selectType('İşyeri Sigortası')">İşyeri</div>
-<div class="option" onclick="selectType('Seyahat Sigortası')">Seyahat</div>
-</div>
+    <section class="story-scene farm-scene" style="--scene-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=82'); --scene-accent:#9AE66E;">
+      <div class="scene-inner">
+        <div class="scene-copy reveal">
+          <span class="scene-label">Tarım ve TARSİM</span>
+          <h2>Üretimin emeğini, doğanın risklerine karşı güvenceye alın.</h2>
+          <p>Tarım sigortalarında ürün, arazi, dönem ve risk yapısına göre daha bilinçli karar verirsiniz. Üretim devam ederken teminatınız da daha net olur.</p>
+          <a class="scene-cta" href="contact.html?type=TARS%C4%B0M#teklif">TARSİM teklifi al <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="scene-visual farm-visual reveal" aria-hidden="true">
+          <div class="farm-dashboard">
+            <div class="growing-tree" aria-hidden="true">
+              <div class="nursery-soil"></div>
+              <div class="seedling seedling-small seedling-left">
+                <span class="seed-stem"></span>
+                <span class="seed-leaf seed-leaf-left"></span>
+                <span class="seed-leaf seed-leaf-right"></span>
+              </div>
+              <div class="seedling seedling-main">
+                <span class="seed-stem"></span>
+                <span class="seed-leaf seed-leaf-left"></span>
+                <span class="seed-leaf seed-leaf-right"></span>
+                <span class="seed-leaf seed-leaf-top"></span>
+              </div>
+              <div class="seedling seedling-small seedling-right">
+                <span class="seed-stem"></span>
+                <span class="seed-leaf seed-leaf-left"></span>
+                <span class="seed-leaf seed-leaf-right"></span>
+              </div>
+              <span class="plant-glow plant-glow-one"></span>
+              <span class="plant-glow plant-glow-two"></span>
+            </div>
+            <div class="farm-stats">
+              <span><i class="fa-solid fa-cloud-showers-heavy"></i> Dolu / fırtına</span>
+              <span><i class="fa-solid fa-temperature-low"></i> Don riski</span>
+              <span><i class="fa-solid fa-seedling"></i> Ürün dönemi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<form id="quoteForm">
-<input type="text" id="type" readonly>
-<input type="text" id="name" placeholder="Ad Soyad" required>
-<input type="tel" id="phone" placeholder="Telefon" required>
-<button type="submit">Teklif Gönder</button>
-</form>
+    <section class="services-section" id="hizmetler">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Hizmetler</span>
+        <h2>Teklif alabileceğiniz sigorta alanları</h2>
+        <p>Kısa formu bırakın, ihtiyacınıza göre en uygun seçenekleri birlikte değerlendirelim.</p>
+      </div>
+      <div class="service-grid">
+        <a class="service-card reveal" href="contact.html?type=Trafik%20Sigortası#teklif" style="--service-color:#2EA3F2;">
+          <i class="fa-solid fa-car-side"></i>
+          <h3>Trafik Sigortası</h3>
+          <p>Zorunlu trafik poliçesinde hızlı teklif ve net yönlendirme.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=Kasko#teklif" style="--service-color:#4BB3FD;">
+          <i class="fa-solid fa-car-burst"></i>
+          <h3>Kasko</h3>
+          <p>Aracınızı hasar, çalınma ve asistans risklerine karşı koruyun.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=Konut%20Sigortası#teklif" style="--service-color:#68D391;">
+          <i class="fa-solid fa-house-chimney"></i>
+          <h3>Konut Sigortası</h3>
+          <p>Eviniz ve eşyalarınız için kapsamlı güvence seçenekleri.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=DASK#teklif" style="--service-color:#F5B642;">
+          <i class="fa-solid fa-building-shield"></i>
+          <h3>DASK</h3>
+          <p>Deprem riskine karşı zorunlu ve temel güvence.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=Sağlık%20Sigortası#teklif" style="--service-color:#2ED3B7;">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <h3>Sağlık Sigortası</h3>
+          <p>Özel sağlık ve tamamlayıcı sağlıkta doğru plan seçimi.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=İş%20Yeri%20Sigortası#teklif" style="--service-color:#7AA7FF;">
+          <i class="fa-solid fa-store"></i>
+          <h3>İş Yeri Sigortası</h3>
+          <p>Faaliyetiniz, demirbaşınız ve operasyonunuz için koruma.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=Seyahat%20Sigortası#teklif" style="--service-color:#A8C7FA;">
+          <i class="fa-solid fa-plane-departure"></i>
+          <h3>Seyahat Sigortası</h3>
+          <p>Yurt içi ve yurt dışı seyahatlerde güvenli başlangıç.</p>
+        </a>
+        <a class="service-card reveal" href="contact.html?type=TARS%C4%B0M#teklif" style="--service-color:#9AE66E;">
+          <i class="fa-solid fa-wheat-awn"></i>
+          <h3>TARSİM</h3>
+          <p>Tarım üretimindeki emek ve gelir riskleri için destek.</p>
+        </a>
+      </div>
+    </section>
 
-</div>
-</div>
+    <section class="trust-section">
+      <div class="trust-copy reveal">
+        <span class="eyebrow">Geleceğe güven</span>
+        <h2>Sigorta, bugün kendine ve geleceğine yaptığın koruma yatırımıdır.</h2>
+        <p>Doğru poliçe; aileni, aracını, evini, işini ve emeğini beklenmedik risklere karşı güçlü tutar. Sadece fiyatı değil, yarın ihtiyaç duyacağın güvenceyi birlikte seçeriz.</p>
+      </div>
+      <div class="trust-list">
+        <div class="trust-item reveal"><i class="fa-solid fa-bolt"></i><span>Hızlı geri dönüş</span></div>
+        <div class="trust-item reveal"><i class="fa-solid fa-crosshairs"></i><span>İhtiyaç odaklı teklif</span></div>
+        <div class="trust-item reveal"><i class="fa-solid fa-route"></i><span>Doğru yönlendirme</span></div>
+        <div class="trust-item reveal"><i class="fa-solid fa-layer-group"></i><span>Geniş sigorta kapsamı</span></div>
+        <div class="trust-item reveal"><i class="fa-solid fa-handshake-angle"></i><span>Güvenilir danışmanlık</span></div>
+      </div>
+    </section>
 
-<script>
-function openModal(){
-document.getElementById("modal").style.display="flex";
-}
+    <section class="process-section">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Teklif alma süreci</span>
+        <h2>3 adımda net ve hızlı teklif akışı</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <span>01</span>
+          <h3>Bilgini bırak</h3>
+          <p>Kısa formdan sigorta türünü ve iletişim bilginizi gönderin.</p>
+        </div>
+        <div class="process-step reveal">
+          <span>02</span>
+          <h3>İhtiyacın analiz edilsin</h3>
+          <p>Teminat, limit ve bütçe beklentinize göre seçenekler netleşsin.</p>
+        </div>
+        <div class="process-step reveal">
+          <span>03</span>
+          <h3>Sana uygun teklif sunulsun</h3>
+          <p>Uygun poliçe alternatiflerini hızlıca karşılaştırıp karar verin.</p>
+        </div>
+      </div>
+    </section>
 
-function selectType(type){
-document.getElementById("options").style.display="none";
-document.getElementById("quoteForm").style.display="flex";
-document.getElementById("type").value=type;
-}
+    <section class="final-cta">
+      <div class="final-inner reveal">
+        <span class="eyebrow">Geleceğini korumaya bugünden başla</span>
+        <h2>Doğru güvence, beklenmedik anlarda yanında olur.</h2>
+        <p>İhtiyacına uygun sigorta seçeneklerini sakin, net ve güven veren bir danışmanlıkla birlikte değerlendirelim.</p>
+        <a class="btn primary" href="contact.html#teklif">
+          <i class="fa-solid fa-paper-plane"></i>
+          Teklif Görüşmesi Başlat
+        </a>
+      </div>
+    </section>
+  </main>
 
-document.getElementById("quoteForm").addEventListener("submit",function(e){
-e.preventDefault();
+  <footer class="site-footer">
+    <span>© Berkcan Sigorta - Sigorta ve Risk Danışmanlığı</span>
+    <span>Denizli ve Türkiye geneli danışmanlık desteği</span>
+  </footer>
 
-let data={
-type:document.getElementById("type").value,
-name:document.getElementById("name").value,
-phone:document.getElementById("phone").value
-};
-
-fetch("https://script.google.com/macros/s/AKfycbxEnm7UwTth16zy5wsBfhvTkRuZJsjI1nfrA83HjV_K-Wl0Uk2iXB3iM0anCs28FDVy/exec",{
-method:"POST",
-mode:"no-cors",
-body:JSON.stringify(data)
-});
-
-if(typeof fbq === "function"){
-fbq('track','Lead');
-}
-
-alert("Talebiniz alındı. En kısa sürede dönüş yapılacaktır.");
-
-window.location.href =
-"https://wa.me/905459173353?text=" +
-encodeURIComponent(data.type + " teklifi almak istiyorum. Ad Soyad: " + data.name + " Telefon: " + data.phone);
-});
-</script>
-
+  <script src="assets/site.js"></script>
 </body>
 </html>
+

@@ -130,7 +130,6 @@
 
   const status = document.querySelector("[data-form-status]");
   const typeSelect = document.querySelector("[data-type-select]");
-  const resultLink = document.querySelector("[data-whatsapp-result]");
   const params = new URLSearchParams(window.location.search);
   const selectedType = params.get("type");
 
@@ -159,14 +158,12 @@
       message ? "Not: " + message : ""
     ].filter(Boolean).join("\n");
 
-    if (resultLink) {
-      resultLink.href = "https://wa.me/905459173353?text=" + encodeURIComponent(whatsappText);
-      resultLink.hidden = false;
-    }
+    const whatsappUrl = "https://wa.me/905459173353?text=" + encodeURIComponent(whatsappText);
 
     if (status) {
-      status.textContent = "Mesaj hazır. WhatsApp'ta Gönder butonuyla talebinizi iletebilirsiniz.";
+      status.textContent = "WhatsApp açılıyor...";
     }
+
+    window.location.assign(whatsappUrl);
   });
 })();
-
